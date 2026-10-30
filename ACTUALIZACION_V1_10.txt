@@ -1,0 +1,9 @@
+ARQWAR v1.10
+
+- Login renovado con identidad DEVIOZ ARQWAR.
+- Se eliminó el bloque de accesos iniciales del login.
+- Se agregó recuperación de contraseña por correo con código de 6 dígitos y vencimiento de 10 minutos.
+- Se agregaron pantallas de verificación, nueva contraseña y confirmación final.
+- Las cuentas nuevas guardan su correo electrónico.
+- Mi cuenta permite registrar/actualizar el correo de recuperación.
+- Se conserva la lógica existente de partidas, salas, equipos, batallas, chat, rankings y participantes.

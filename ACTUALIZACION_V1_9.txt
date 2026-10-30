@@ -1,0 +1,20 @@
+ARQWAR v1.9 - AVATARES EN CHAT Y RANKING
+
+CAMBIOS
+- El chat general, de equipo y de partidas individuales ahora muestra el avatar seleccionado por cada participante.
+- El avatar se obtiene desde participants.avatar_emoji y se normaliza contra el catalogo visual de ARQWAR.
+- Cada mensaje muestra el avatar real del autor junto a su burbuja.
+- La identidad del usuario que envia mensajes tambien muestra su avatar.
+- Se agrego una animacion visual corta y sutil al avatar, manteniendo el estilo neon de ARQWAR.
+- El ranking individual reemplaza el icono generico del nivel por el avatar seleccionado por el participante.
+- El alias del ranking tambien muestra una version pequena del avatar.
+- Se centralizo el catalogo y SVG de avatares en includes/avatars.php para reutilizarlo en participantes, chat y ranking.
+- Los participantes existentes no pierden puntos, equipos, historial ni configuracion.
+
+INSTALACION
+1. Reemplaza la carpeta arqwar por la incluida en este ZIP.
+2. Si ya tienes v1.8 instalada, abre upgrade.php como administrador si tu instalacion solicita una actualizacion.
+3. Recarga con Ctrl+F5.
+
+NOTA
+No se modifico la logica de juego, dados, cartas, salas, cuentas ni permisos. Esta actualizacion se enfoca en la representacion visual de los avatares.

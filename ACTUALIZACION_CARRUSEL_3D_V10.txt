@@ -1,0 +1,32 @@
+ARQWAR - CARRUSEL 3D NEON 4K UHD V10
+
+DISEÑO
+- Se conserva el contenido de las 6 diapositivas existentes.
+- El carrusel ahora utiliza una composición 3D tipo slider: una diapositiva central protagonista y diapositivas laterales en perspectiva, con profundidad, escala, iluminación y desenfoque progresivo.
+- El diseño se inspira en un carrusel de tarjetas apiladas moderno, pero mantiene la identidad visual tecnológica de ARQWAR.
+- Se agregaron bordes holográficos, reflejo animado y profundidad visual sin modificar la estructura funcional del sistema.
+
+CALIDAD DE IMAGEN
+- Los seis masters principales permanecen en 3840x2160 (4K UHD).
+- Se aplicó un enfoque suave a los masters para mejorar la percepción de nitidez sin alterar el contenido.
+- Se regeneraron las variantes 1920x1080 y 1280x720 a partir de los masters mejorados.
+- Se mantiene srcset responsive para que el navegador utilice una resolución adecuada según pantalla y densidad de píxeles.
+
+INTERACTIVIDAD
+- Cambio automático cada 6 segundos.
+- Flechas anterior/siguiente.
+- Indicadores de diapositiva.
+- Clic sobre una diapositiva lateral para llevarla al centro.
+- Navegación con teclado: flechas, Home, End y espacio para pausar/reanudar.
+- Deslizamiento táctil en celulares.
+- Pausa al pasar el cursor o enfocar el carrusel.
+- Precarga de diapositivas vecinas.
+
+COMPATIBILIDAD
+- Responsive para PC, tablet y celular.
+- La proporción y perspectiva se reducen automáticamente en pantallas pequeñas.
+- Respeta prefers-reduced-motion.
+
+LOGICA
+- No se modifica la lógica PHP, base de datos, autenticación, partidas, salas, equipos, dados, cartas, ranking ni chat.
+- La modificación se limita al carrusel de la pantalla de inicio y a sus recursos gráficos.

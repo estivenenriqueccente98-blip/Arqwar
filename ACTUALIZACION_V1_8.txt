@@ -1,0 +1,28 @@
+ARQWAR v1.8 - VINCULACION CUENTA + PARTICIPANTE
+
+Esta version mantiene la estructura actual de ARQWAR y agrega una relacion estable entre la cuenta de acceso y el participante.
+
+CAMBIOS
+- Cada cuenta tiene un participante asociado mediante participants.user_id.
+- register.php crea la cuenta y su participante en la misma operacion.
+- login.php verifica que la cuenta tenga su participante asociado.
+- Participantes antiguos se vinculan automaticamente por alias/username cuando es posible.
+- Si una cuenta antigua no tiene participante, ARQWAR puede crearlo automaticamente al iniciar sesion o usar una partida.
+- El chat continua identificando al autor por la sesion y participant_id, sin permitir elegir otro usuario.
+- Las partidas individuales siguen usando el participante vinculado de la cuenta.
+- El panel administrativo muestra si un participante tiene una cuenta vinculada.
+- No se eliminan equipos, cartas, puntos, partidas ni historial existentes.
+
+ACTUALIZACION DE UNA INSTALACION EXISTENTE
+1. Copia esta carpeta arqwar sobre tu proyecto actual, haciendo respaldo antes.
+2. Inicia sesion como administrador.
+3. Abre: http://localhost/arqwar_chat_version/arqwar/upgrade.php
+4. Pulsa "Actualizar a v1.8".
+5. Cierra sesion y vuelve a iniciar sesion para comprobar la vinculacion.
+
+INSTALACION NUEVA
+- setup.php y sql/arqwar.sql ya crean participants.user_id, su indice unico y la clave foranea.
+
+NOTA
+- La migracion conserva participantes existentes y primero intenta vincularlos por alias.
+- El archivo sql/account_participant.sql es una alternativa manual para phpMyAdmin; para una instalacion existente se recomienda usar upgrade.php.

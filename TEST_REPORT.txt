@@ -1,0 +1,17 @@
+ARQWAR v1.5 - Validación de entrega
+===================================
+
+Validaciones realizadas en el entorno de construcción:
+- Sintaxis PHP: OK en todos los archivos .php.
+- Sintaxis JavaScript: OK en assets/js/*.js.
+- Esquema de instalación: incluye roles admin/operator.
+- Usuarios iniciales: general y admin.
+- Consola administrativa: admin.php presente.
+- Protecciones: admin_required_html(), permisos destructivos restringidos y setup/upgrade protegidos.
+- Persistencia del juego v1.4 conservada en el paquete.
+
+Pendiente de validar en el equipo del usuario:
+- Ejecución real de MySQL/MariaDB mediante XAMPP.
+- Flujo visual completo en navegador local y TV.
+
+Motivo: este entorno de construcción no dispone de servidor MySQL/MariaDB ni extensiones PHP MySQL activas.

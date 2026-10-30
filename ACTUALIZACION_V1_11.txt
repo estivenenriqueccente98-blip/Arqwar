@@ -1,0 +1,9 @@
+ARQWAR v1.11
+
+- Se corrigio el envio de codigos de recuperacion para XAMPP usando SMTP autenticado.
+- Se agrego soporte nativo para Gmail SMTP con STARTTLS en el puerto 587, sin Composer ni dependencias externas.
+- Se mantuvo el codigo de recuperacion de 6 digitos con vigencia de 10 minutos.
+- Se mejoro el correo HTML para que se vea correctamente en Gmail movil y escritorio, con identidad DEVIOZ ARQWAR.
+- Se agrego mail-test.php para que el administrador pueda probar el envio SMTP.
+- Se mejoro el diseño del login y las pantallas de recuperacion con un HUD tecnologico, estados de seguridad y responsive.
+- No se modifico la logica de partidas, salas, equipos, participantes, chat ni rankings.

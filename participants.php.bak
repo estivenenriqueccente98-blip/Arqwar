@@ -1,0 +1,813 @@
+<?php
+require_once __DIR__ . '/includes/bootstrap.php';
+login_required_html();
+
+$msg = '';
+$error = '';
+
+function arqwar_avatar_catalog(): array
+{
+    return [
+        'cyber_skull' => ['tag' => '#cybe', 'name' => 'Cráneo Cyber'],
+        'mecha_helmet' => ['tag' => '#mech', 'name' => 'Casco Mecha'],
+        'plasma_lion' => ['tag' => '#plas', 'name' => 'León de Plasma'],
+        'neon_phoenix' => ['tag' => '#cybe', 'name' => 'Fénix Neón'],
+        'electric_dragon' => ['tag' => '#mech', 'name' => 'Dragón Eléctrico'],
+        'cosmic_gem' => ['tag' => '#cosm', 'name' => 'Gema Cósmica'],
+        'cyber_shinobi' => ['tag' => '#cybe', 'name' => 'Shinobi Cyber'],
+        'ia_core' => ['tag' => '#aic', 'name' => 'Núcleo IA'],
+        'alpha_wolf' => ['tag' => '#wolf', 'name' => 'Lobo Alfa'],
+        'wise_owl' => ['tag' => '#mech', 'name' => 'Búho Sabio Cyber'],
+        'assault_droid' => ['tag' => '#cybe', 'name' => 'Droide Asalto'],
+        'cyber_valkyrie' => ['tag' => '#valk', 'name' => 'Valquiria Cyber'],
+        'cyber_kitsune' => ['tag' => '#beast', 'name' => 'Ciber Kitsune'],
+        'hydra_ai' => ['tag' => '#aic', 'name' => 'Hydra AI'],
+        'quantum_kraken' => ['tag' => '#beast', 'name' => 'Kraken Quantum'],
+        'spectre_v' => ['tag' => '#spec', 'name' => 'Spectre V'],
+        'plasma_panther' => ['tag' => '#plas', 'name' => 'Pantera Plasma'],
+        'cyber_mantis' => ['tag' => '#mech', 'name' => 'Ciber Mantis'],
+        'titan_lightning' => ['tag' => '#titan', 'name' => 'Titán Relámpago'],
+        'holo_gladiator' => ['tag' => '#glad', 'name' => 'Gladiador Holo'],
+        'cyber_scorpion' => ['tag' => '#beast', 'name' => 'Ciber Escorpión'],
+        'cubic_fox' => ['tag' => '#cosm', 'name' => 'Zorro Cúbico'],
+        'neon_serpent' => ['tag' => '#beast', 'name' => 'Serpiente Neón'],
+        'holo_trophy' => ['tag' => '#rank', 'name' => 'Trofeo Holográfico'],
+    ];
+}
+
+function arqwar_avatar_legacy_map(): array
+{
+    return [
+        '👤' => 'cyber_skull',
+        '🧑' => 'mecha_helmet',
+        '👨' => 'plasma_lion',
+        '👩' => 'neon_phoenix',
+        '🧑‍💻' => 'electric_dragon',
+        '👨‍💻' => 'cosmic_gem',
+        '👩‍💻' => 'cyber_shinobi',
+        '🧠' => 'ia_core',
+        '🚀' => 'alpha_wolf',
+        '⚡' => 'wise_owl',
+        '🔥' => 'assault_droid',
+        '🛡️' => 'cyber_valkyrie',
+        '🐉' => 'cyber_kitsune',
+        '🦊' => 'hydra_ai',
+        '🦁' => 'quantum_kraken',
+        '🐺' => 'spectre_v',
+        '🦅' => 'plasma_panther',
+        '🦉' => 'cyber_mantis',
+        '🐼' => 'titan_lightning',
+        '🤖' => 'holo_gladiator',
+        '🎯' => 'cyber_scorpion',
+        '🧩' => 'cubic_fox',
+        '🎮' => 'neon_serpent',
+        '🏆' => 'holo_trophy',
+    ];
+}
+
+function arqwar_avatar_key(string $value): string
+{
+    $catalog = arqwar_avatar_catalog();
+    $legacy = arqwar_avatar_legacy_map();
+    $value = trim($value);
+
+    if (isset($catalog[$value])) {
+        return $value;
+    }
+
+    if (isset($legacy[$value])) {
+        return $legacy[$value];
+    }
+
+    return 'cyber_skull';
+}
+
+function arqwar_avatar_meta(string $value): array
+{
+    $catalog = arqwar_avatar_catalog();
+    $key = arqwar_avatar_key($value);
+    return $catalog[$key];
+}
+
+function arqwar_avatar_svg(string $value): string
+{
+    $key = arqwar_avatar_key($value);
+
+    $cyan = '#19E3FF';
+    $cyan2 = '#5BF2FF';
+    $gold = '#FFC928';
+    $pink = '#FF3ED1';
+
+    switch ($key) {
+        case 'cyber_skull':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="26" r="15"/>
+    <path d="M22 41h20v6c0 2-2 4-4 4H26c-2 0-4-2-4-4z"/>
+    <circle cx="27" cy="25" r="2.5"/>
+    <circle cx="37" cy="25" r="2.5"/>
+    <path d="M30 31h4M27 45v3M32 45v3M37 45v3"/>
+    <path d="M20 21l-4-2M44 21l4-2M25 15l-2-4M39 15l2-4"/>
+  </g>
+  <circle cx="32" cy="32" r="26" fill="none" stroke="$gold" stroke-opacity=".25"/>
+</svg>
+SVG;
+
+        case 'mecha_helmet':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 10l18 9v14c0 11-8 18-18 21-10-3-18-10-18-21V19z"/>
+    <path d="M22 29h20"/>
+    <path d="M24 24c2-4 6-6 8-6s6 2 8 6"/>
+    <path d="M26 37c4 2 8 2 12 0"/>
+    <path d="M20 20l-3-2M44 20l3-2"/>
+  </g>
+  <path d="M24 29h16" stroke="$gold" stroke-width="2.4" stroke-linecap="round"/>
+</svg>
+SVG;
+
+        case 'plasma_lion':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 9l5 8 10-2-1 10 8 5-8 5 1 10-10-2-5 8-5-8-10 2 1-10-8-5 8-5-1-10 10 2z"/>
+    <path d="M24 30c2-5 6-8 8-8s6 3 8 8"/>
+    <path d="M26 37c4 2 8 2 12 0"/>
+    <path d="M30 29h4"/>
+  </g>
+  <path d="M32 20l4 6h-8z" fill="none" stroke="$gold" stroke-width="2.2"/>
+</svg>
+SVG;
+
+        case 'neon_phoenix':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 13c4 4 5 9 4 13 7-2 13 1 17 7-7 1-12 4-16 9-2 2-3 5-4 9-1-4-2-7-4-9-4-5-9-8-16-9 4-6 10-9 17-7-1-4 0-9 2-13z"/>
+    <path d="M32 20l-1 12"/>
+    <path d="M32 21l5-3M31 21l-5-3"/>
+  </g>
+  <path d="M32 16l3 5-3 3-3-3z" fill="none" stroke="$pink" stroke-width="2"/>
+</svg>
+SVG;
+
+        case 'electric_dragon':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M13 23l12-8 12 6 14-8-8 14 8 12-14-3-10 12-2-13-13-4 10-8z"/>
+    <path d="M31 21l7 6-5 3 4 7-10-4"/>
+  </g>
+  <path d="M33 23l5 4-4 3" stroke="$pink" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+SVG;
+
+        case 'cosmic_gem':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 10l16 14-16 30L16 24z"/>
+    <path d="M22 18h20"/>
+    <path d="M24 24l8 30 8-30"/>
+  </g>
+  <path d="M32 10l6 8H26z" fill="none" stroke="$gold" stroke-width="2"/>
+</svg>
+SVG;
+
+        case 'cyber_shinobi':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 15h24l9 17-9 17H20l-9-17z"/>
+    <path d="M21 30h22"/>
+    <path d="M24 30l4-6h8l4 6"/>
+    <path d="M25 37c5 2 9 2 14 0"/>
+  </g>
+  <rect x="25" y="27" width="14" height="6" rx="2" fill="none" stroke="$gold" stroke-width="2"/>
+</svg>
+SVG;
+
+        case 'ia_core':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 16h26l10 16-10 16H19L9 32z"/>
+    <circle cx="32" cy="32" r="11"/>
+    <circle cx="32" cy="32" r="3"/>
+    <path d="M32 9v8M55 32h-8M32 55v-8M9 32h8"/>
+  </g>
+  <circle cx="32" cy="32" r="6" fill="none" stroke="$gold" stroke-width="2"/>
+</svg>
+SVG;
+
+        case 'alpha_wolf':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 18l10 5 5-7 5 7 10-5-3 12 5 8-10 2-7 8-7-8-10-2 5-8z"/>
+    <path d="M24 36l8 6 8-6"/>
+    <path d="M28 30h0M36 30h0"/>
+  </g>
+  <path d="M32 26v8" stroke="$gold" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
+SVG;
+
+        case 'wise_owl':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="25" cy="29" r="8"/>
+    <circle cx="39" cy="29" r="8"/>
+    <path d="M18 24V18l7 5M46 24V18l-7 5"/>
+    <path d="M18 38c3 8 9 12 14 12s11-4 14-12"/>
+    <path d="M29 34l3 4 3-4"/>
+  </g>
+  <path d="M32 33l3 2-3 3-3-3z" fill="none" stroke="$gold" stroke-width="2"/>
+</svg>
+SVG;
+
+        case 'assault_droid':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="19" y="18" width="26" height="24" rx="6"/>
+    <path d="M32 12v6M25 47v5M39 47v5M15 25h4M45 25h4"/>
+    <path d="M23 27h18"/>
+    <circle cx="27" cy="31" r="2"/>
+    <circle cx="37" cy="31" r="2"/>
+  </g>
+  <path d="M24 24h16" stroke="$gold" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
+SVG;
+
+        case 'cyber_valkyrie':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 12l16 8v11c0 10-6 18-16 21-10-3-16-11-16-21V20z"/>
+    <path d="M22 22l-6 6M42 22l6 6"/>
+    <path d="M24 33h16"/>
+  </g>
+  <path d="M32 19l4 5h-8z" fill="none" stroke="$gold" stroke-width="2"/>
+</svg>
+SVG;
+
+        case 'cyber_kitsune':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 18l8 5 4-8 4 8 8-5-2 12 7 6-10 2-7 8-7-8-10-2 7-6z"/>
+    <path d="M26 34l6 5 6-5"/>
+    <path d="M29 29h0M35 29h0"/>
+  </g>
+  <path d="M32 31l3 3h-6z" fill="none" stroke="$gold" stroke-width="2"/>
+</svg>
+SVG;
+
+        case 'hydra_ai':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="20" r="5"/>
+    <path d="M32 25v14"/>
+    <path d="M32 28c-7 2-11 7-12 15"/>
+    <path d="M32 28c0 0 0 0 0 0"/>
+    <path d="M32 28c7 2 11 7 12 15"/>
+    <path d="M29 30c-4 2-6 7-6 14"/>
+    <path d="M35 30c4 2 6 7 6 14"/>
+    <circle cx="20" cy="47" r="2"/>
+    <circle cx="26" cy="46" r="2"/>
+    <circle cx="38" cy="46" r="2"/>
+    <circle cx="44" cy="47" r="2"/>
+  </g>
+  <circle cx="32" cy="20" r="2.5" fill="none" stroke="$gold" stroke-width="2"/>
+</svg>
+SVG;
+
+        case 'quantum_kraken':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="24" r="8"/>
+    <path d="M24 31c-4 2-7 6-8 12"/>
+    <path d="M28 31c-3 3-4 8-4 14"/>
+    <path d="M36 31c3 3 4 8 4 14"/>
+    <path d="M40 31c4 2 7 6 8 12"/>
+    <path d="M31 24h0M33 24h0"/>
+  </g>
+  <circle cx="28" cy="23" r="1.5" fill="$gold"/>
+  <circle cx="36" cy="23" r="1.5" fill="$gold"/>
+</svg>
+SVG;
+
+        case 'spectre_v':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 15h24l8 10-6 21-14 5-14-5-6-21z"/>
+    <path d="M22 21h20"/>
+  </g>
+  <path d="M25 28l7 12 7-12" stroke="$gold" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+SVG;
+
+        case 'plasma_panther':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 18h24l8 14-8 14H20l-8-14z"/>
+    <path d="M23 29c3-4 6-6 9-6s6 2 9 6"/>
+    <path d="M25 38c5 2 9 2 14 0"/>
+  </g>
+  <path d="M26 32h12" stroke="$gold" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
+SVG;
+
+        case 'cyber_mantis':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 18v28"/>
+    <path d="M26 24l-10-8M38 24l10-8"/>
+    <path d="M28 29l-12 5M36 29l12 5"/>
+    <path d="M27 37l-9 11M37 37l9 11"/>
+    <path d="M29 18h6"/>
+  </g>
+  <path d="M31 18l1-5 1 5" stroke="$gold" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>
+SVG;
+
+        case 'titan_lightning':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 16h24l8 16-8 16H20l-8-16z"/>
+  </g>
+  <path d="M35 18l-7 12h5l-4 14 11-15h-6z" fill="none" stroke="$gold" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+SVG;
+
+        case 'holo_gladiator':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="16"/>
+    <path d="M32 16v32M16 32h32"/>
+  </g>
+  <path d="M22 32c2-5 6-8 10-8s8 3 10 8" stroke="$gold" stroke-width="2" fill="none"/>
+</svg>
+SVG;
+
+        case 'cyber_scorpion':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 40c-6-2-10-7-10-13 0-7 6-12 14-12 7 0 12 4 14 10"/>
+    <path d="M43 25c6 3 8 8 6 14-1 5-6 8-11 8"/>
+    <path d="M38 30l8 6"/>
+    <path d="M24 40l-4 6M30 42l-1 7"/>
+  </g>
+  <path d="M47 17c4 2 5 7 1 10" stroke="$gold" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+</svg>
+SVG;
+
+        case 'cubic_fox':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 18l12-6 12 6 4 14-16 18-16-18z"/>
+    <path d="M24 29c2-3 5-4 8-4s6 1 8 4"/>
+    <path d="M27 36c3 2 7 2 10 0"/>
+  </g>
+  <path d="M32 17l3 4h-6z" fill="none" stroke="$gold" stroke-width="2"/>
+</svg>
+SVG;
+
+        case 'neon_serpent':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$cyan" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M43 14c-7 0-12 5-12 12v8c0 4-3 7-7 7-2 0-4-1-6-2"/>
+    <path d="M43 14c4 1 7 4 8 8"/>
+    <path d="M18 39c-3 2-5 5-5 8 0 4 3 7 7 7 5 0 9-4 9-9"/>
+  </g>
+  <path d="M45 13l5 3-4 4" stroke="$gold" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+SVG;
+
+        case 'holo_trophy':
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <g fill="none" stroke="$gold" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 14h16v8c0 7-4 12-8 15-4-3-8-8-8-15z"/>
+    <path d="M24 18h-6c0 5 3 9 8 10M40 18h6c0 5-3 9-8 10"/>
+    <path d="M32 37v8"/>
+    <path d="M24 49h16"/>
+  </g>
+  <path d="M20 49h24" stroke="$cyan" stroke-width="2"/>
+</svg>
+SVG;
+
+        default:
+            return <<<SVG
+<svg viewBox="0 0 64 64" aria-hidden="true">
+  <circle cx="32" cy="24" r="10" fill="none" stroke="$cyan" stroke-width="2.4"/>
+  <path d="M20 50c2-8 7-14 12-14s10 6 12 14" fill="none" stroke="$cyan" stroke-width="2.4" stroke-linecap="round"/>
+</svg>
+SVG;
+    }
+}
+
+$avatarCatalog = arqwar_avatar_catalog();
+$avatarOptions = array_keys($avatarCatalog);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        if (!hash_equals(csrf_token(), $_POST['csrf'] ?? '')) {
+            throw new RuntimeException('Solicitud inválida.');
+        }
+
+        $a = $_POST['action'] ?? '';
+
+        if ($a === 'create') {
+            $alias = trim($_POST['alias'] ?? '');
+            $name = trim($_POST['full_name'] ?? '');
+            $specialty = trim($_POST['specialty'] ?? '');
+            $emoji = arqwar_avatar_key($_POST['avatar_emoji'] ?? 'cyber_skull');
+
+            if (strlen($alias) < 2) {
+                throw new RuntimeException('El alias debe tener al menos 2 caracteres.');
+            }
+
+            exec_sql(
+                'INSERT INTO participants(alias,full_name,specialty,avatar_emoji) VALUES(?,?,?,?)',
+                [$alias, $name ?: null, $specialty ?: null, $emoji ?: 'cyber_skull']
+            );
+
+            header('Location: participants.php?created=1');
+            exit;
+        }
+
+        if ($a === 'toggle') {
+            if (!is_admin()) {
+                throw new RuntimeException('Solo el administrador puede cambiar el estado de participantes.');
+            }
+
+            exec_sql(
+                'UPDATE participants SET is_active=? WHERE id=?',
+                [(int)($_POST['active'] ?? 0), (int)$_POST['id']]
+            );
+
+            header('Location: participants.php?updated=1');
+            exit;
+        }
+    } catch (Throwable $e) {
+        $error = $e->getMessage();
+    }
+}
+
+if (isset($_GET['created'])) $msg = 'Participante creado.';
+if (isset($_GET['updated'])) $msg = 'Participante actualizado.';
+
+$people = [];
+try {
+    $people = participant_ranking_rows();
+} catch (Throwable $e) {
+    $error = $e->getMessage();
+}
+?>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARQWAR · Participantes</title>
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/app.css">
+
+<style>
+  /* =========================
+     SOLO DISEÑO DE AVATARES
+  ========================== */
+
+  .avatar-picker{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+  }
+
+  @media (max-width: 1200px){
+    .avatar-picker{
+      grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+  }
+
+  @media (max-width: 576px){
+    .avatar-picker{
+      grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+  }
+
+  .avatar-option{
+    position:relative;
+    min-height:126px;
+    border:1px solid rgba(27,196,255,.22);
+    border-radius:12px;
+    background:
+      linear-gradient(180deg, rgba(8,18,42,.95), rgba(3,11,26,.98));
+    box-shadow:
+      inset 0 0 0 1px rgba(81,230,255,.04),
+      0 0 16px rgba(0,157,255,.08);
+    padding:8px 10px 12px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    overflow:hidden;
+    transition:.25s ease;
+    color:#a9efff;
+  }
+
+  .avatar-option::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(rgba(23,157,255,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23,157,255,.05) 1px, transparent 1px);
+    background-size:100% 14px, 14px 100%;
+    pointer-events:none;
+    opacity:.55;
+  }
+
+  .avatar-option::after{
+    content:'';
+    position:absolute;
+    left:10px;
+    right:10px;
+    bottom:0;
+    height:3px;
+    border-radius:999px;
+    background:linear-gradient(90deg, transparent, #0fe3ff, transparent);
+    box-shadow:0 0 10px rgba(15,227,255,.55);
+    opacity:.9;
+  }
+
+  .avatar-option:hover{
+    transform:translateY(-2px);
+    border-color:rgba(58,224,255,.45);
+    box-shadow:
+      inset 0 0 0 1px rgba(81,230,255,.08),
+      0 0 18px rgba(15,227,255,.16);
+  }
+
+  .avatar-option.active{
+    border-color:#ffc400;
+    box-shadow:
+      inset 0 0 0 1px rgba(255,209,46,.16),
+      0 0 20px rgba(255,196,0,.25);
+    background:
+      linear-gradient(180deg, rgba(47,37,8,.92), rgba(21,15,5,.98));
+  }
+
+  .avatar-option.active::after{
+    background:linear-gradient(90deg, transparent, #ffd24a, transparent);
+    box-shadow:0 0 12px rgba(255,210,74,.7);
+  }
+
+  .avatar-code{
+    width:100%;
+    text-align:left;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.8px;
+    color:#6dc9ff;
+    opacity:.9;
+    position:relative;
+    z-index:2;
+  }
+
+  .avatar-option.active .avatar-code{
+    color:#ffd24a;
+  }
+
+  .avatar-art{
+    width:52px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#19E3FF;
+    filter:
+      drop-shadow(0 0 8px rgba(25,227,255,.32))
+      drop-shadow(0 0 12px rgba(25,227,255,.18));
+    position:relative;
+    z-index:2;
+  }
+
+  .avatar-option.active .avatar-art{
+    color:#19E3FF;
+    filter:
+      drop-shadow(0 0 8px rgba(25,227,255,.4))
+      drop-shadow(0 0 16px rgba(255,196,0,.22));
+  }
+
+  .avatar-art svg{
+    width:100%;
+    height:100%;
+    display:block;
+  }
+
+  .avatar-name{
+    width:100%;
+    text-align:center;
+    font-size:12.5px;
+    font-weight:700;
+    color:#dff9ff;
+    line-height:1.15;
+    position:relative;
+    z-index:2;
+  }
+
+  .avatar-option.active .avatar-name{
+    color:#fff2b0;
+  }
+
+  .participant-avatar.avatar-badge{
+    width:84px;
+    height:84px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(27,196,255,.25);
+    background:
+      radial-gradient(circle at 30% 25%, rgba(120,68,255,.28), transparent 48%),
+      linear-gradient(180deg, rgba(15,29,66,.95), rgba(8,16,36,.98));
+    box-shadow:
+      inset 0 0 0 1px rgba(81,230,255,.04),
+      0 0 14px rgba(0,157,255,.08);
+    overflow:hidden;
+    flex-shrink:0;
+    position:relative;
+  }
+
+  .participant-avatar.avatar-badge::after{
+    content:'';
+    position:absolute;
+    left:10px;
+    right:10px;
+    bottom:8px;
+    height:2px;
+    border-radius:999px;
+    background:linear-gradient(90deg, transparent, rgba(15,227,255,.95), transparent);
+    box-shadow:0 0 8px rgba(15,227,255,.4);
+  }
+
+  .participant-avatar .avatar-art{
+    width:46px;
+    height:46px;
+    margin-top:-4px;
+  }
+
+  .participant-avatar .avatar-art svg{
+    width:100%;
+    height:100%;
+  }
+</style>
+</head>
+<body class="gm-body arqwar-glow-bg">
+
+<nav class="navbar navbar-dark border-bottom border-secondary-subtle">
+  <div class="container-fluid">
+    <a class="navbar-brand brand" href="index.php">ARQWAR <span>PARTICIPANTES</span></a>
+    <div class="d-flex gap-2 flex-wrap">
+      <a class="btn btn-sm btn-outline-light" href="index.php">Inicio</a>
+      <a class="btn btn-sm btn-outline-warning" href="teams.php">Equipos</a>
+      <a class="btn btn-sm btn-outline-success" href="participant-ranking.php">Ranking individual</a>
+      <?php if (is_admin()): ?>
+        <a class="btn btn-sm btn-danger" href="admin.php?section=participants">Administrar CRUD</a>
+      <?php endif; ?>
+    </div>
+  </div>
+</nav>
+
+<main class="container-fluid py-4 px-lg-4">
+  <div class="row g-4">
+
+    <div class="col-xl-4">
+      <section class="panel p-4 arq-card depth-card">
+        <div class="eyebrow">PASO PREVIO A LOS EQUIPOS</div>
+        <h1 class="h3">Registrar participante fijo</h1>
+        <p class="text-secondary">
+          El participante conserva su alias, historial y puntos aunque juegue distintas partidas.
+          Después lo asignas a uno o varios equipos.
+        </p>
+
+        <?php if ($error): ?>
+          <div class="alert alert-danger"><?= e($error) ?></div>
+        <?php endif; ?>
+
+        <?php if ($msg): ?>
+          <div class="alert alert-success"><?= e($msg) ?></div>
+        <?php endif; ?>
+
+        <form method="post" id="participantForm">
+          <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
+          <input type="hidden" name="action" value="create">
+
+          <label class="form-label">Alias competitivo</label>
+          <input class="form-control form-control-lg mb-3" name="alias" required placeholder="Ej.: Luis">
+
+          <label class="form-label">Nombre</label>
+          <input class="form-control mb-3" name="full_name" placeholder="Opcional">
+
+          <label class="form-label">Especialidad</label>
+          <input class="form-control mb-3" name="specialty" placeholder="Ej.: Data Engineer">
+
+          <label class="form-label">Avatar</label>
+          <input type="hidden" name="avatar_emoji" id="avatarEmojiInput" value="cyber_skull">
+
+          <div class="avatar-picker mb-2" id="avatarPicker">
+            <?php foreach ($avatarOptions as $i => $avatarKey): ?>
+              <?php $meta = $avatarCatalog[$avatarKey]; ?>
+              <button
+                type="button"
+                class="avatar-option <?= $i === 0 ? 'active' : '' ?>"
+                data-avatar="<?= e($avatarKey) ?>"
+                aria-label="<?= e($meta['name']) ?>"
+                title="<?= e($meta['name']) ?>"
+              >
+                <span class="avatar-code"><?= e($meta['tag']) ?></span>
+                <span class="avatar-art"><?= arqwar_avatar_svg($avatarKey) ?></span>
+                <span class="avatar-name"><?= e($meta['name']) ?></span>
+              </button>
+            <?php endforeach; ?>
+          </div>
+
+          <div class="small text-secondary mb-3">
+            Selecciona un icono para el jugador. Podrás cambiarlo luego desde el panel administrativo.
+          </div>
+
+          <button class="btn btn-warning btn-lg w-100">Crear participante</button>
+        </form>
+      </section>
+    </div>
+
+    <div class="col-xl-8">
+      <div class="d-flex justify-content-between align-items-end mb-3 flex-wrap gap-3">
+        <div>
+          <div class="eyebrow">REGISTRO GLOBAL</div>
+          <h2 class="h3 mb-0">Participantes</h2>
+        </div>
+        <a class="btn btn-outline-success" href="participant-ranking.php">Ver ranking</a>
+      </div>
+
+      <div class="participant-grid">
+        <?php foreach ($people as $p): ?>
+          <?php
+            $avatarKey = arqwar_avatar_key($p['avatar_emoji'] ?: 'cyber_skull');
+          ?>
+          <article class="participant-card arq-card depth-card">
+            <div class="participant-avatar avatar-badge">
+              <span class="avatar-art"><?= arqwar_avatar_svg($avatarKey) ?></span>
+            </div>
+
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between gap-2 flex-wrap">
+                <div>
+                  <h3><?= e($p['alias']) ?></h3>
+                  <p><?= e($p['specialty'] ?: 'Sin especialidad') ?></p>
+                </div>
+                <div class="participant-level">
+                  <span><?= e($p['level']['icon']) ?></span>
+                  <b><?= e($p['level']['name']) ?></b>
+                </div>
+              </div>
+
+              <div class="participant-stats">
+                <span>Puntos <b><?= $p['total_points'] ?></b></span>
+                <span>Respuestas <b><?= $p['answers'] ?></b></span>
+                <span>Pronunciación <b><?= $p['pronunciation_hits'] ?></b></span>
+              </div>
+            </div>
+          </article>
+        <?php endforeach; ?>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+document.querySelectorAll('#avatarPicker .avatar-option').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('#avatarPicker .avatar-option').forEach(x => x.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('avatarEmojiInput').value = btn.dataset.avatar || 'cyber_skull';
+}));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+ARQWAR - CARRUSEL 4K UHD INTERACTIVO
+
+MEJORA VISUAL
+- Las 6 diapositivas del carrusel se mantienen con el mismo diseño y contenido.
+- Se sustituyeron los recursos del carrusel por masters WebP 3840x2160 (4K UHD), con enfoque suave para conservar nitidez al mostrarlos en pantallas grandes.
+- Se agregaron versiones 1920x1080 y 1280x720 para carga responsive mediante srcset.
+
+INTERACTIVIDAD
+- Navegacion anterior/siguiente.
+- Indicadores por diapositiva.
+- Cambio automatico cada 6 segundos.
+- Pausa al pasar el cursor o enfocar el carrusel.
+- Navegacion con teclado: flechas, Home y End.
+- Gestos tactiles de deslizamiento en celular.
+- Precarga de diapositivas vecinas para cambios mas fluidos.
+
+LOGICA
+- No se modifica la logica PHP, base de datos, autenticacion, partidas, salas, equipos, dados, cartas ni chat.
+- La mejora se limita al carrusel de la pantalla de inicio y sus recursos graficos.

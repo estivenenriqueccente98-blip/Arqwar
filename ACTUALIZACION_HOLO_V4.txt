@@ -1,0 +1,15 @@
+ARQWAR - HOLOGRAPHIC HUD V4
+
+MEJORA VISUAL
+- Se reforzo el fondo holografico con reticula, barrido y ambiente tecnologico.
+- Se agrego un recurso visual HUD holografico en assets/img/arqwar-holographic-hud.svg.
+- Se mejoraron los paneles de partida, escenario, incidente, jugadores, chat y modales.
+- Se intensificaron los bordes neon sin cambiar los colores funcionales de ARQWAR.
+- Las casillas de jugadores/equipos tienen iluminacion y respiracion visual sutil.
+- Se mejoraron los indicadores, metricas, botones y elementos de identidad.
+- Los avatares mantienen su animacion y reciben un halo holografico.
+- Se mantiene el responsive y la preferencia de movimiento reducido.
+
+IMPORTANTE
+Esta actualizacion modifica unicamente CSS y agrega un recurso grafico SVG.
+No modifica la logica PHP, JavaScript, SQL, cuentas, salas, permisos, dados, cartas ni chat.

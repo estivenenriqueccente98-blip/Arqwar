@@ -1,0 +1,27 @@
+ARQWAR V1.13 - REDISENO DE NUEVA PARTIDA
+
+Objetivo:
+- Transformar la pantalla game-master.php?new=1 en un lobby/launcher de videojuego futurista.
+- Mantener intacta la logica existente de creacion de partidas.
+
+Cambios visuales:
+- Hero de Nueva Partida con estetica sci-fi/holografica.
+- Seleccion visual interactiva entre Batalla por equipos y Batalla individual.
+- Flujo visual por pasos: Area, Casuistica, Jugadores y Partida.
+- Paneles de configuracion con estilo HUD/Glass.
+- Equipos como tarjetas seleccionables.
+- Responsive para PC, tablet y celular.
+- Animaciones hover, scanline, glow y estados de seleccion.
+
+Compatibilidad funcional:
+- Se conservan los IDs y nombres de campos usados por gm.js y por el backend.
+- No se modifica la logica de dados, cartas, rondas, ranking, chat, salas o permisos.
+- La seleccion de modalidad visual sincroniza el campo game_mode existente.
+
+Archivos agregados:
+- assets/css/arqwar-launcher.css
+- assets/js/arqwar-launcher.js
+- assets/img/launcher/new-game-hero.jpg
+
+Archivo modificado:
+- game-master.php
